@@ -102,18 +102,17 @@
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
 
-         var canvas2 = document.getElementById("myCanvas2");
-         var ctx2 = canvas2.getContext('2d');   
-         var imageData = context.getImageData(0, 0, 600,500);
+         var canvas2 = document.getElementById("myCanvas2");//Creates canvas2 and identifies it with a label
+         var ctx2 = canvas2.getContext('2d'); // ensures a 2d image will show on the new canvas
+         var imageData = context.getImageData(0, 0, 600,500);// contains the properties that the new canvas will be stored on
          var data = imageData.data
 
-         for (var i=0, j=data.length; i < j; i+=4)
-          {
-           data[i] = 0
-           data[i+1] = 0;
-          }
+         for (var i = 0; i < data.length; i += 4) { // for loop removes the red and green pixles and leaves behind the blue pixels
+          data[i + 1] = 0;
+          data[i + 2] = 0;
+         }
 
-        ctx2.putImageData(imageData, 0, 0);
+        ctx2.putImageData(imageData, 0, 0); // new canvas image is displayed in only blue
           
           
           
@@ -148,20 +147,20 @@
       
       <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var canvas = document.getElementById('myCanvas');
-        var context = canvas.getContext("2d");
-        context.font = '20pt Calibri';
-        context.fillStyle = "black";
-        context.fillText("Original image will go here", 10, 20);
+        var canvas = document.getElementById('myCanvas'); // creates the first canvas
+        var context = canvas.getContext("2d"); // ensures the canvas is a 2d image
+        context.font = '20pt Calibri'; // font selection for canvas 1
+        context.fillStyle = "black";// color selection for text in canvas 1
+        context.fillText("Original image will go here", 10, 20);// image location for canvas 1
       </script>
 
       <canvas id="myCanvas2" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> // This script makes the second canvas with the exact same dimensions
-        var canvas2 = document.getElementById('myCanvas2');
-        var ctx2 = canvas2.getContext("2d");
-        ctx2.font = '20pt Calibri';
-        ctx2.fillStyle = "black";
-        ctx2.fillText("Blue image will go here", 10, 20);
+        var canvas2 = document.getElementById('myCanvas2'); // creates the second canvas
+        var ctx2 = canvas2.getContext("2d"); // ensures the canvas is a 2d image
+        ctx2.font = '20pt Calibri'; // font selection for canvas 2
+        ctx2.fillStyle = "black"; // color selection for text in canvas 2
+        ctx2.fillText("Blue image will go here", 10, 20); // image location for canvas 2
       </script>
      
     </div><!-- /content -->
