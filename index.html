@@ -96,6 +96,7 @@
           /*This finally draws the image onto the first drawing canvas. The specific canvas is referred to by "context". This is established down in the HTML part of the file just under the first <canvas> tag. If we weren't worried about fixing an iPhone bug we would use context.drawImage(image, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500) instead of drawImageIOSFix */
         
           drawImageIOSFix(context,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
+          drawImageIOSFix(ctx2,img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500);
           
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -105,12 +106,12 @@
          var canvas2 = document.getElementById("myCanvas2");
          var ctx2 = canvas2.getContext('2d');   
          var imageData = context.getImageData(0, 0, 600,500);
-         var dat = imageData.data
+         var data = imageData.data
 
-         for (var i=0, j=dat.length; i < j; i+=4)
+         for (var i=0, j=data.length; i < j; i+=4)
           {
-           dat[i] = 0
-           dat[i+1] = 0;
+           data[i] = 0
+           data[i+1] = 0;
           }
 
          ctx2.putImageData(imageData, 0, 0);
